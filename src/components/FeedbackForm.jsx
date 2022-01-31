@@ -5,6 +5,7 @@ import Button from './shared/Button';
 
 function FeedbackForm() {
 	const [text, setText] = useState('');
+	const [rating, setRating] = useState(10);
 	const [btnDisabled, setBtnDisabled] = useState(false);
 	const [message, setMessage] = useState('');
 
@@ -27,7 +28,7 @@ function FeedbackForm() {
 		<Card>
 			<form>
 				<h2>How would you rate your service with us?</h2>
-				<RatingSelect />
+				<RatingSelect select={(rating) => setRating(rating)} />
 				<div className="input-group">
 					<input
 						onChange={handleTextChange}
