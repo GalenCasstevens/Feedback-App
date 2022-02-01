@@ -9,13 +9,14 @@ function Button({ children, version, type, isDisabled }) {
 }
 
 Button.defaultProps = {
-	version: 'primary',
+	children: 'Send',
+	version: 'secondary',
 	type: 'button',
 	isDisabled: false,
 };
 
 Button.propTypes = {
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
 	version: PropTypes.string,
 	type: PropTypes.string,
 	isDisabled: PropTypes.bool,
