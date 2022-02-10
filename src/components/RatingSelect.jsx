@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function RatingSelect({ select }) {
 	const [selected, setSelected] = useState(10);
