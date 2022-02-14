@@ -5,6 +5,7 @@ import FeedbackData from '../data/FeedbackData';
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
+	const [isLoading, setIsLoading] = useState(true);
 	const [feedback, setFeedback] = useState([]);
 	const [feedbackEdit, setFeedbackEdit] = useState({
 		item: {},
@@ -12,7 +13,7 @@ export const FeedbackProvider = ({ children }) => {
 	});
 
 	useEffect(() => {
-		console.log(123);
+		fetchFeedback();
 	}, []);
 
 	const fetchFeedback = async () => {
@@ -20,6 +21,9 @@ export const FeedbackProvider = ({ children }) => {
 			`http://localhost:5000/feedback?_sort=id&_order=desc`
 		);
 		const data = await response.json();
+
+		setFeedback(data);
+		setIsLoading(false);
 	};
 
 	const addFeedback = (newFeedback) => {
@@ -50,6 +54,7 @@ export const FeedbackProvider = ({ children }) => {
 			value={{
 				feedback,
 				feedbackEdit,
+				isLoading,
 				addFeedback,
 				deleteFeedback,
 				editFeedback,
